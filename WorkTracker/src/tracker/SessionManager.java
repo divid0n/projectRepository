@@ -9,16 +9,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SessionManager {
-	protected int[] totalHours = { 0, 0, 0 };
+	protected double[] totalHours = { 0, 0, 0 };
 	ArrayList<Integer> options = new ArrayList<>();
 	int hours;
 	LocalDate dateNow;
 	ArrayList<String> dates = new ArrayList<>();
-	ArrayList<Integer> hoursPerDay = new ArrayList<>();
+	ArrayList<Double> hoursPerDay = new ArrayList<>();
 	WorkSession session;
 	int option;
 
-	public SessionManager(int optionChosen, int hoursWorked) throws IOException {
+	public SessionManager(int optionChosen, double hoursWorked) throws IOException {
 		LocalDate date = LocalDate.now();
 		this.option = optionChosen;
 
@@ -51,31 +51,28 @@ public class SessionManager {
 	public void readFile() throws FileNotFoundException, IOException {
 		try (BufferedReader reader = new BufferedReader(new FileReader("sessions.csv"))) {
 			String line;
-			int  i = 0;
+			int i = 0;
 			while ((line = reader.readLine()) != null) {
 				String[] parts = line.split(",");
 				options.add(Integer.parseInt(parts[0]));
-				totalHours[options.get(i)-1] += Integer.parseInt(parts[1]);
+				totalHours[options.get(i) - 1] += Double.parseDouble(parts[1]);
 				dates.add(parts[2]);
-				hoursPerDay.add(Integer.parseInt(parts[1]));
+				hoursPerDay.add(Double.parseDouble(parts[1]));
 				i++;
 			}
 
 		}
 	}
-	
 
 	public void total() {
 		session.setTotal(totalHours[session.getOption() - 1]);
 		System.out.println("Total hours worked on " + session.getName() + ": " + totalHours[session.getOption() - 1]);
-		for (int i = dates.size() - 1 ; i >= 0 ; i--) {
-			
-			System.out.println("Date: " + dates.get(i) + " | Goal: " + session.getName(options.get(i)) + " | Hours worked: "
-					+ hoursPerDay.get(i));
+		for (int i = dates.size() - 1; i >= 0; i--) {
+
+			System.out.println("Date: " + dates.get(i) + " | Goal: " + session.getName(options.get(i))
+					+ " | Hours worked: " + hoursPerDay.get(i));
 		}
 	}
-	
-
 
 	public void eraseData() throws IOException {
 		FileWriter writer = new FileWriter("sessions.csv", false);

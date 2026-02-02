@@ -1,17 +1,14 @@
 package tracker;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class WorkSession {
 
-	int totalHours;
+	double totalHours;
 
-	int sessionHours;
+	double sessionHours;
 
 	String name;
 
@@ -19,7 +16,7 @@ public class WorkSession {
 
 	int option;
 
-	public WorkSession(String nameName, int hoursWorked, LocalDate date, int inputOption) throws IOException {
+	public WorkSession(String nameName, double hoursWorked, LocalDate date, int inputOption) throws IOException {
 
 		this.name = nameName;
 		this.sessionHours = hoursWorked;
@@ -32,7 +29,7 @@ public class WorkSession {
 		return this.name;
 	}
 
-	public int getHours() {
+	public double getHours() {
 		return this.sessionHours;
 	}
 
@@ -56,12 +53,13 @@ public class WorkSession {
 	public int getOption() {
 		return this.option;
 	}
-	
-	public void setTotal(int hours) {
+
+	public void setTotal(double hours) {
 		this.totalHours = hours;
 
 	}
-	public int getTotal() {
+
+	public double getTotal() {
 		return totalHours;
 	}
 }
