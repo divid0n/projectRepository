@@ -9,16 +9,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SessionManager {
-	protected double[] totalHours = { 0, 0, 0 };
+	protected float[] totalHours = { 0, 0, 0 };
 	ArrayList<Integer> options = new ArrayList<>();
 	int hours;
 	LocalDate dateNow;
 	ArrayList<String> dates = new ArrayList<>();
-	ArrayList<Double> hoursPerDay = new ArrayList<>();
+	ArrayList<Float> hoursPerDay = new ArrayList<>();
 	WorkSession session;
 	int option;
 
-	public SessionManager(int optionChosen, double hoursWorked) throws IOException {
+	public SessionManager(int optionChosen, float hoursWorked) throws IOException {
 		LocalDate date = LocalDate.now();
 		this.option = optionChosen;
 
@@ -44,7 +44,6 @@ public class SessionManager {
 	public void writeFile() throws IOException {
 		try (FileWriter writer = new FileWriter("sessions.csv", true)) {
 			writer.write(session.getOption() + "," + session.getHours() + "," + session.getDate() + "\n");
-			System.out.println("Hours logged.");
 		}
 	}
 
@@ -55,9 +54,9 @@ public class SessionManager {
 			while ((line = reader.readLine()) != null) {
 				String[] parts = line.split(",");
 				options.add(Integer.parseInt(parts[0]));
-				totalHours[options.get(i) - 1] += Double.parseDouble(parts[1]);
+				totalHours[options.get(i) - 1] += Float.parseFloat(parts[1]);
 				dates.add(parts[2]);
-				hoursPerDay.add(Double.parseDouble(parts[1]));
+				hoursPerDay.add(Float.parseFloat(parts[1]));
 				i++;
 			}
 
@@ -66,11 +65,10 @@ public class SessionManager {
 
 	public void total() {
 		session.setTotal(totalHours[session.getOption() - 1]);
-		System.out.println("Total hours worked on " + session.getName() + ": " + totalHours[session.getOption() - 1]);
+		System.out.printf("Total hours worked on %s : %.2f%n",  session.getName(), totalHours[session.getOption() - 1]);
 		for (int i = dates.size() - 1; i >= 0; i--) {
 
-			System.out.println("Date: " + dates.get(i) + " | Goal: " + session.getName(options.get(i))
-					+ " | Hours worked: " + hoursPerDay.get(i));
+			System.out.printf("Date: %s | Goal: %s  | Hours worked: %.2f%n", dates.get(i), session.getName(options.get(i)),  hoursPerDay.get(i));
 		}
 	}
 

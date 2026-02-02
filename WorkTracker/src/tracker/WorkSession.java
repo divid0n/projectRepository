@@ -6,9 +6,9 @@ import java.time.LocalDate;
 
 public class WorkSession {
 
-	double totalHours;
+	float totalHours;
 
-	double sessionHours;
+	float sessionHours;
 
 	String name;
 
@@ -16,7 +16,7 @@ public class WorkSession {
 
 	int option;
 
-	public WorkSession(String nameName, double hoursWorked, LocalDate date, int inputOption) throws IOException {
+	public WorkSession(String nameName, float hoursWorked, LocalDate date, int inputOption) throws IOException {
 
 		this.name = nameName;
 		this.sessionHours = hoursWorked;
@@ -54,12 +54,12 @@ public class WorkSession {
 		return this.option;
 	}
 
-	public void setTotal(double hours) {
+	public void setTotal(float hours) {
 		this.totalHours = hours;
 
 	}
 
-	public double getTotal() {
+	public float getTotal() {
 		return totalHours;
 	}
 }

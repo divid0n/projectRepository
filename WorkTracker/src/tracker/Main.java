@@ -18,26 +18,30 @@ public class Main {
 
 		int option = skener.nextInt();
 		skener.nextLine();
-
-		System.out.println("Press enter when ready.");
-
-		skener.nextLine();
-		System.out.println("Start: " + LocalTime.now().truncatedTo(ChronoUnit.MINUTES));
-
-		long startTime = System.currentTimeMillis();
-
-		System.out.println("Press enter when finished.");
-		skener.nextLine();
-
-		System.out.println("End: " + LocalTime.now().truncatedTo(ChronoUnit.MINUTES));
-
-		long endTime = System.currentTimeMillis();
-
-		double duration = (endTime - startTime) / 3600000.0;
 		
-		System.out.println(duration);
+		float duration = 0;
+		
+		if(option != 4) {
+			System.out.println("Press enter when ready.");
 
-		skener.close();
+			skener.nextLine();
+			System.out.println("Start: " + LocalTime.now().truncatedTo(ChronoUnit.MINUTES));
+
+			long startTime = System.currentTimeMillis();
+
+			System.out.println("Press enter when finished.");
+			skener.nextLine();
+
+			System.out.println("End: " + LocalTime.now().truncatedTo(ChronoUnit.MINUTES));
+
+			long endTime = System.currentTimeMillis();
+
+			duration = (endTime - startTime) / 3600000f;
+
+			skener.close();
+		}
+
+		
 		SessionManager mngr = new SessionManager(option, duration);
 		if (option != 4) {
 			mngr.writeFile();
