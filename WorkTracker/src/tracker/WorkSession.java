@@ -43,6 +43,8 @@ public class WorkSession {
 		case 2:
 			return "Coding Projects";
 		case 3:
+			return "School Assignments";
+		case 4:
 			return "Guitar Practice";
 		default:
 			return "Oopsie";

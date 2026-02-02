@@ -11,9 +11,10 @@ public class Main {
 		System.out.println("What are you working on today?");
 		System.out.println("Goal 1: TU Wien Admission");
 		System.out.println("Subgoal 2: Coding projects");
-		System.out.println("Subgoal 3: Guitar Practice");
-		System.out.println("Option 4: Erase all data"); // make an option just to display data
-		System.out.println("Option 5: Check data"); // make it so that this also displays the total of each and maybe even averages...
+		System.out.println("Subgoal 3: School assignments");
+		System.out.println("Subgoal 4: Guitar Practice");
+		System.out.println("Option 5: Erase all data"); // make an option just to display data
+		System.out.println("Option 6: Check data"); // make it so that this also displays the total of each and maybe even averages...
 
 		Scanner skener = new Scanner(System.in);
 
@@ -22,7 +23,7 @@ public class Main {
 		
 		float duration = 0;
 		
-		if(option == 5) {
+		if(option == 6) {
 			SessionManager mngr = new SessionManager(option, duration);
 			mngr.readFile();
 			mngr.total();
@@ -30,7 +31,7 @@ public class Main {
 
 		
 
-		if (option < 4) {
+		if (option < 5) {
 			System.out.println("Press enter when ready.");
 
 			skener.nextLine();
