@@ -33,7 +33,9 @@ public class Main {
 
 		long endTime = System.currentTimeMillis();
 
-		double duration = (endTime - startTime) / (60 * 60 * 1000);
+		double duration = (endTime - startTime) / 3600000.0;
+		
+		System.out.println(duration);
 
 		skener.close();
 		SessionManager mngr = new SessionManager(option, duration);
