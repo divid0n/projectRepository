@@ -13,33 +13,31 @@ public class Main {
 		System.out.println("Subgoal 2: Coding projects");
 		System.out.println("Subgoal 3: School assignments");
 		System.out.println("Subgoal 4: Guitar Practice");
-		System.out.println("Option 5: Erase all data"); // make an option just to display data
-		System.out.println("Option 6: Check data"); // make it so that this also displays the total of each and maybe even averages...
+		System.out.println("Option 5: Erase all data");
+		System.out.println("Option 6: Check data");
 
 		Scanner skener = new Scanner(System.in);
 
 		int option = skener.nextInt();
 		skener.nextLine();
-		
+
 		float duration = 0;
-		
-		if(option == 6) {
+
+		if (option == 6 || option == 5) {
+			skener.close();
 			SessionManager mngr = new SessionManager(option, duration);
-			mngr.readFile();
-			mngr.total();
-		}
-
-		
-
-		if (option < 5) {
+		} else {
+			
 			System.out.println("Press enter when ready.");
 
 			skener.nextLine();
+			
 			System.out.println("Start: " + LocalTime.now().truncatedTo(ChronoUnit.MINUTES));
 
 			long startTime = System.currentTimeMillis();
 
 			System.out.println("Press enter when finished.");
+			
 			skener.nextLine();
 
 			System.out.println("End: " + LocalTime.now().truncatedTo(ChronoUnit.MINUTES));
@@ -49,14 +47,9 @@ public class Main {
 			duration = (endTime - startTime) / 36000f;
 
 			skener.close();
-		
 
 			SessionManager mngr = new SessionManager(option, duration);
-			
-			mngr.writeFile();
-			mngr.readFile();
-			mngr.today();
-			mngr.total();
+			mngr.operate();
 		}
 
 	}

@@ -8,6 +8,8 @@ public class WorkSession {
 	float totalHours;
 
 	float sessionHours;
+	
+	int numberOfSessions = 0;
 
 	String name;
 
@@ -21,7 +23,9 @@ public class WorkSession {
 		this.sessionHours = hoursWorked;
 		this.dateToday = date;
 		this.option = inputOption;
-
+		totalHours += hoursWorked;
+		
+		
 	}
 
 	public String getName() {
@@ -62,5 +66,9 @@ public class WorkSession {
 
 	public float getTotal() {
 		return totalHours;
+	}
+	
+	public float getAverage() {
+		return totalHours / numberOfSessions;
 	}
 }

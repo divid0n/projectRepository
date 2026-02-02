@@ -8,15 +8,17 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+
 public class SessionManager {
-	protected float[] totalHours = new float[5];
+	//protected float[] totalHours = new float[5];
 	ArrayList<Integer> options = new ArrayList<>();
-	int hours;
+	float totalHours = 0;
 	LocalDate dateNow;
 	ArrayList<String> dates = new ArrayList<>();
 	ArrayList<Float> hoursPerDay = new ArrayList<>();
 	WorkSession session;
 	int option;
+	float average;
 
 	public SessionManager(int optionChosen, float hoursWorked) throws IOException {
 		LocalDate date = LocalDate.now();
@@ -40,7 +42,9 @@ public class SessionManager {
 			break;
 		case 6:
 			session = new WorkSession("Check Data", hoursWorked, date, optionChosen);
+			readFile();
 			total();
+			showAveragePerSession();
 			break;
 		default:
 			System.out.println("Something went wrong :)");
@@ -57,32 +61,32 @@ public class SessionManager {
 	public void readFile() throws FileNotFoundException, IOException {
 		try (BufferedReader reader = new BufferedReader(new FileReader("sessions.csv"))) {
 			String line;
-			int i = 0;
 			while ((line = reader.readLine()) != null) {
 				String[] parts = line.split(",");
 				options.add(Integer.parseInt(parts[0]));
-				totalHours[options.get(i) - 1] += Float.parseFloat(parts[1]);
 				dates.add(parts[2]);
 				hoursPerDay.add(Float.parseFloat(parts[1]));
-				i++;
+				totalHours += Float.parseFloat(parts[1]);
 			}
-
+			average = totalHours / dates.size();
 		}
 	}
 
 	public void today() {
-		session.setTotal(totalHours[session.getOption() - 1]);
+		//session.setTotal(totalHours[session.getOption() - 1]);
 		System.out.printf("Hours worked this session: %.2f%n", session.getHours());
-		
+
 	}
-	
+
 	public void total() {
 		for (int i = dates.size() - 1; i >= 0; i--) {
-			// if(hoursPerDay.get(i) > 0.1) { // in reality I wouldnt log 0 hours per day or smth
 			System.out.printf("Date: %-10s | Goal: %-18s  | Hours worked: %.2f%n", dates.get(i),
 					session.getName(options.get(i)), hoursPerDay.get(i));
-			// }
 		}
+	}
+	
+	public void showAveragePerSession() {
+		System.out.printf("Average hours worked per session: %.4f%n", average);
 	}
 
 	public void eraseData() throws IOException {
@@ -90,6 +94,13 @@ public class SessionManager {
 		writer.write("");
 		writer.close();
 		System.out.println("All data erased successfully.");
+	}
+	
+	public void operate() throws IOException {
+		writeFile();
+		readFile();
+		today();
+		total();
 	}
 
 }
