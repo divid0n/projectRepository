@@ -11,7 +11,7 @@ public class Main {
 		System.out.println("Subgoal 2: Coding projects");
 		System.out.println("Subgoal 3: Guitar");
 		System.out.println("Option 4: Erase all data");
-
+ //haha
 		Scanner skener = new Scanner(System.in);
 		int option = skener.nextInt();
 
