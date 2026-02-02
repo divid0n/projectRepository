@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SessionManager {
-	protected float[] totalHours = { 0, 0, 0 };
+	protected float[] totalHours = new float[5];
 	ArrayList<Integer> options = new ArrayList<>();
 	int hours;
 	LocalDate dateNow;
@@ -34,6 +34,10 @@ public class SessionManager {
 			break;
 		case 4:
 			eraseData();
+			break;
+		case 5:
+			session = new WorkSession("Check Data", hoursWorked, date, optionChosen);
+			total();
 			break;
 		default:
 			System.out.println("Something went wrong :)");
@@ -63,16 +67,22 @@ public class SessionManager {
 		}
 	}
 
-	public void total() {
+	public void today() {
 		session.setTotal(totalHours[session.getOption() - 1]);
 		System.out.printf("Hours worked this session: %.2f%n", session.getHours());
-		System.out.printf("Total hours worked on %s : %.2f%n", session.getName(), totalHours[session.getOption() - 1]);
+		
+	}
+	
+	public void total() {
 		for (int i = dates.size() - 1; i >= 0; i--) {
 			// if(hoursPerDay.get(i) > 0.1) { // in reality I wouldnt log 0 hours per day or smth
 			System.out.printf("Date: %-10s | Goal: %-17s  | Hours worked: %.2f%n", dates.get(i),
 					session.getName(options.get(i)), hoursPerDay.get(i));
 			// }
 		}
+//		for(int i = 0; i < 3; i++) {
+//			System.out.printf("Total hours worked on %s : %.2f%n", session.getName(), totalHours[session.getOption() - 1]);
+//		}	
 	}
 
 	public void eraseData() throws IOException {
