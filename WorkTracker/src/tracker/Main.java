@@ -12,16 +12,16 @@ public class Main {
 		System.out.println("Goal 1: TU Wien Admission");
 		System.out.println("Subgoal 2: Coding projects");
 		System.out.println("Subgoal 3: Guitar");
-		System.out.println("Option 4: Erase all data");
+		System.out.println("Option 4: Erase all data"); // make an option just to display data
 
 		Scanner skener = new Scanner(System.in);
 
 		int option = skener.nextInt();
 		skener.nextLine();
-		
+
 		float duration = 0;
-		
-		if(option != 4) {
+
+		if (option != 4) {
 			System.out.println("Press enter when ready.");
 
 			skener.nextLine();
@@ -41,7 +41,6 @@ public class Main {
 			skener.close();
 		}
 
-		
 		SessionManager mngr = new SessionManager(option, duration);
 		if (option != 4) {
 			mngr.writeFile();
