@@ -29,7 +29,7 @@ public class WorkSession {
 		return this.name;
 	}
 
-	public double getHours() {
+	public float getHours() {
 		return this.sessionHours;
 	}
 
