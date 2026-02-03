@@ -25,7 +25,7 @@ public class Main {
 
 		if (option == 6 || option == 5) {
 			skener.close();
-			SessionManager mngr = new SessionManager(option, duration);
+			//SessionManager mngr = new SessionManager(option, duration);
 		} else {
 			
 			System.out.println("Press enter when ready.");
@@ -48,8 +48,8 @@ public class Main {
 
 			skener.close();
 
-			SessionManager mngr = new SessionManager(option, duration);
-			mngr.operate();
+			//SessionManager mngr = new SessionManager(option, duration);
+			//mngr.operate();
 		}
 
 	}

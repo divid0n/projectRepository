@@ -20,35 +20,42 @@ public class SessionManager {
 	int option;
 	float average;
 
-	public SessionManager(int optionChosen, float hoursWorked) throws IOException {
+//	public SessionManager(int optionChosen, float hoursWorked) throws IOException {
+//		LocalDate date = LocalDate.now();
+//		this.option = optionChosen;
+//
+//		switch (optionChosen) {
+//		case 1:
+//			session = new WorkSession("TU Wien Admission", hoursWorked, date, optionChosen);
+//			break;
+//		case 2:
+//			session = new WorkSession("Coding Project", hoursWorked, date, optionChosen);
+//			break;
+//		case 3:
+//			session = new WorkSession("Guitar Practice", hoursWorked, date, optionChosen);
+//			break;
+//		case 4:
+//			session = new WorkSession("School Assignments", hoursWorked, date, optionChosen);
+//			break;
+//		case 5:
+//			eraseData();
+//			break;
+//		case 6:
+//			session = new WorkSession("Check Data", hoursWorked, date, optionChosen);
+//			readFile();
+//			total();
+//			showAveragePerSession();
+//			break;
+//		default:
+//			System.out.println("Something went wrong :)");
+//		}
+//
+//	}
+	
+	public SessionManager(String goalChosen, float hoursWorked, int optionChosen) throws IOException {
 		LocalDate date = LocalDate.now();
-		this.option = optionChosen;
-
-		switch (optionChosen) {
-		case 1:
-			session = new WorkSession("TU Wien Admission", hoursWorked, date, optionChosen);
-			break;
-		case 2:
-			session = new WorkSession("Coding Project", hoursWorked, date, optionChosen);
-			break;
-		case 3:
-			session = new WorkSession("Guitar Practice", hoursWorked, date, optionChosen);
-			break;
-		case 4:
-			session = new WorkSession("School Assignments", hoursWorked, date, optionChosen);
-			break;
-		case 5:
-			eraseData();
-			break;
-		case 6:
-			session = new WorkSession("Check Data", hoursWorked, date, optionChosen);
-			readFile();
-			total();
-			showAveragePerSession();
-			break;
-		default:
-			System.out.println("Something went wrong :)");
-		}
+		
+		session = new WorkSession(goalChosen, hoursWorked, date, optionChosen);
 
 	}
 
@@ -72,28 +79,29 @@ public class SessionManager {
 		}
 	}
 
-	public void today() {
+	public String today() {
 		//session.setTotal(totalHours[session.getOption() - 1]);
-		System.out.printf("Hours worked this session: %.2f%n", session.getHours());
-
+		return String.format("Hours worked this session: %.2f%n", session.getHours());
 	}
 
-	public void total() {
+	public String total() {
+		String output = "";
 		for (int i = dates.size() - 1; i >= 0; i--) {
-			System.out.printf("Date: %-10s | Goal: %-18s  | Hours worked: %.2f%n", dates.get(i),
+			output += String.format("Date: %-10s | Goal: %-18s  | Hours worked: %.2f%n", dates.get(i),
 					session.getName(options.get(i)), hoursPerDay.get(i));
 		}
+		return output;
 	}
 	
-	public void showAveragePerSession() {
-		System.out.printf("Average hours worked per session: %.4f%n", average);
+	public String showAveragePerSession() {
+		return String.format("Average hours worked per session: %.4f%n", average);
 	}
 
-	public void eraseData() throws IOException {
+	public String eraseData() throws IOException {
 		FileWriter writer = new FileWriter("sessions.csv", false);
 		writer.write("");
 		writer.close();
-		System.out.println("All data erased successfully.");
+		return "All data erased successfully.";
 	}
 	
 	public void operate() throws IOException {
