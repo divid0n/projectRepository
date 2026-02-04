@@ -127,7 +127,7 @@ public class MainWindow {
 		startButton.setBounds(435, 152, 89, 23);
 		frame.getContentPane().add(startButton);
 
-		JButton stopButton = new JButton("Stop");
+		JButton stopButton = new JButton("End");
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -167,12 +167,13 @@ public void timing() throws IOException {
 	timer= new Timer();
 	task = new TimerTask() {
 		long time;
+		int i = 0;
 
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
 			time = System.currentTimeMillis() -  startTime;
-			long seconds = time / 1000;
+			long seconds = i;
 			long minutes = seconds / 60;
 			long hours = minutes / 60;
 			seconds %= 60;
@@ -182,6 +183,7 @@ public void timing() throws IOException {
 			//String output = 
 			
 			elapsedTime.setText(output);
+			i++;
 		}
 		
 	};
