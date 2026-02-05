@@ -69,6 +69,7 @@ public class MainWindow {
 		frame.setBounds(100, 100, 603, 351);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		textArea.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 
 		
 		textArea.setEditable(false); // MAKE A PAUSE BUTTON FOR THE TIMER.
@@ -82,12 +83,12 @@ public class MainWindow {
 		comboBox.addItem("Guitar Practice");
 		comboBox.addItem("Check Data");
 		comboBox.addItem("Erase all data");
-		comboBox.setBounds(80, 30, 192, 22);
+		comboBox.setBounds(75, 30, 192, 22);
 		frame.getContentPane().add(comboBox);
 
 		
-		elapsedTime.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		elapsedTime.setBounds(400, 39, 142, 33);
+		elapsedTime.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		elapsedTime.setBounds(301, 16, 185, 49);
 		frame.getContentPane().add(elapsedTime);
 
 		JButton startButton = new JButton("Start");
@@ -125,7 +126,7 @@ public class MainWindow {
 				}
 			}
 		});
-		startButton.setBounds(435, 152, 89, 23);
+		startButton.setBounds(453, 152, 89, 23);
 		frame.getContentPane().add(startButton);
 
 		JButton stopButton = new JButton("End");
@@ -153,10 +154,10 @@ public class MainWindow {
 				
 			}
 		});
-		stopButton.setBounds(435, 186, 89, 23);
+		stopButton.setBounds(453, 186, 89, 23);
 		frame.getContentPane().add(stopButton);
 
-		textArea.setBounds(10, 89, 390, 200);
+		textArea.setBounds(10, 89, 421, 200);
 		frame.getContentPane().add(textArea);
 
 	}
