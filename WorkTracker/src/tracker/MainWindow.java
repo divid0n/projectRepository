@@ -71,7 +71,7 @@ public class MainWindow {
 		frame.getContentPane().setLayout(null);
 
 		
-		textArea.setEditable(false);
+		textArea.setEditable(false); // MAKE A PAUSE BUTTON FOR THE TIMER.
 		textArea.setLineWrap(true);
 
 		
@@ -117,6 +117,7 @@ public class MainWindow {
 				} else {
 					try {
 						timing();
+						textArea.setText("Work in progress...");
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -138,6 +139,9 @@ public class MainWindow {
 						mngr.writeFile();
 						mngr.readFile();
 						textArea.setText(mngr.today() + mngr.total());
+						startTime = 0;
+						timer.purge();
+						timer.cancel();
 					} else {
 						JOptionPane.showMessageDialog(frame, "Ty trulo, sak to sa tak nerobi");
 					}
@@ -146,9 +150,7 @@ public class MainWindow {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(frame, "Ty trulo, sak to sa tak nerobi");
 				}
-				startTime = 0;
-				timer.purge();
-				timer.cancel();
+				
 			}
 		});
 		stopButton.setBounds(435, 186, 89, 23);
