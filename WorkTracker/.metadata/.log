@@ -171,3 +171,16 @@ java.lang.Exception: The project description file (.project) for '.org.eclipse.e
 
 !ENTRY org.eclipse.e4.ui.workbench 2 0 2026-02-05 15:45:02.320
 !MESSAGE Removing PartDescriptorImpl with the "org.eclipse.wb.core.PaletteView" id and the "Palette" label.It points to the non available "bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" class. Bundle might have been uninstalled
+!SESSION 2026-02-05 15:48:14.771 -----------------------------------------------
+eclipse.buildId=4.38.0.20251204-0849
+java.version=21.0.9
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=en_SK
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/danaildoganov/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -product org.eclipse.epp.package.java.product -keyring /Users/danaildoganov/.eclipse_keyring
+
+!ENTRY ch.qos.logback.classic 1 0 2026-02-05 15:48:15.625
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2026-02-05 15:48:27.542
+!MESSAGE Logback config file: /Users/danaildoganov/Documents/doganovCode/projectRepository/WorkTracker/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.101.20251017-1242.xml
