@@ -19,8 +19,8 @@ import java.awt.Font;
 public class MainWindow {
 
 	long startTime = 0;
-	long endTime;
-	float duration;
+	long endTime; // MAKE A PAUSE BUTTON FOR THE TIMER.
+	float duration; //  ADD AVERAGE PER DAY NOT ONLY PER SESSION.
 	String selectedGoal;
 	int optionChosen;
 	Timer timer;
@@ -70,7 +70,7 @@ public class MainWindow {
 		textArea.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 
 		
-		textArea.setEditable(false); // MAKE A PAUSE BUTTON FOR THE TIMER.
+		textArea.setEditable(false); 
 		textArea.setLineWrap(true);
 
 		
@@ -80,6 +80,7 @@ public class MainWindow {
 		comboBox.addItem("School assignments");
 		comboBox.addItem("Guitar Practice");
 		comboBox.addItem("Gaming (slacking off)");
+		comboBox.addItem("Work");
 		comboBox.addItem("Check Data");
 		comboBox.addItem("Erase all data");
 		comboBox.setBounds(75, 30, 192, 22);
@@ -94,7 +95,7 @@ public class MainWindow {
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				optionChosen = comboBox.getSelectedIndex();
-				if (comboBox.getSelectedIndex() == 6) {
+				if (comboBox.getSelectedIndex() == 7) {
 					try {
 						mngr = new SessionManager(selectedGoal, duration, optionChosen);
 						mngr.readFile();
@@ -103,7 +104,7 @@ public class MainWindow {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				} else if (comboBox.getSelectedIndex() == 7) {
+				} else if (comboBox.getSelectedIndex() == 8) {
 					try {
 						 mngr = new SessionManager(selectedGoal, duration, optionChosen);
 						textArea.setText(mngr.eraseData());

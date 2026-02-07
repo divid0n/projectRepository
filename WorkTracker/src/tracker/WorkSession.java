@@ -52,6 +52,8 @@ public class WorkSession {
 			return "Guitar Practice";
 		case 5:
 			return "Gaming (slacking off)";
+		case 6: 
+			return "Work";
 		default:
 			return "Oopsie";
 		}
