@@ -184,3 +184,16 @@ Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -product org.eclipse
 
 !ENTRY ch.qos.logback.classic 1 0 2026-02-05 15:48:27.542
 !MESSAGE Logback config file: /Users/danaildoganov/Documents/doganovCode/projectRepository/WorkTracker/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.101.20251017-1242.xml
+!SESSION 2026-02-07 23:36:07.432 -----------------------------------------------
+eclipse.buildId=4.38.0.20251204-0849
+java.version=21.0.9
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=en_SK
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/danaildoganov/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -product org.eclipse.epp.package.java.product -keyring /Users/danaildoganov/.eclipse_keyring -data /Users/danaildoganov/Documents/doganovCode/projectRepository/WorkTracker
+
+!ENTRY ch.qos.logback.classic 1 0 2026-02-07 23:36:09.312
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2026-02-07 23:36:11.328
+!MESSAGE Logback config file: /Users/danaildoganov/Documents/doganovCode/projectRepository/WorkTracker/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.101.20251017-1242.xml
