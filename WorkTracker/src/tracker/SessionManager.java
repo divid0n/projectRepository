@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-
 public class SessionManager {
-	//protected float[] totalHours = new float[5];
 	ArrayList<Integer> options = new ArrayList<>();
 	float totalHours = 0;
 	LocalDate dateNow;
@@ -20,41 +18,9 @@ public class SessionManager {
 	int option;
 	float average;
 
-//	public SessionManager(int optionChosen, float hoursWorked) throws IOException {
-//		LocalDate date = LocalDate.now();
-//		this.option = optionChosen;
-//
-//		switch (optionChosen) {
-//		case 1:
-//			session = new WorkSession("TU Wien Admission", hoursWorked, date, optionChosen);
-//			break;
-//		case 2:
-//			session = new WorkSession("Coding Project", hoursWorked, date, optionChosen);
-//			break;
-//		case 3:
-//			session = new WorkSession("Guitar Practice", hoursWorked, date, optionChosen);
-//			break;
-//		case 4:
-//			session = new WorkSession("School Assignments", hoursWorked, date, optionChosen);
-//			break;
-//		case 5:
-//			eraseData();
-//			break;
-//		case 6:
-//			session = new WorkSession("Check Data", hoursWorked, date, optionChosen);
-//			readFile();
-//			total();
-//			showAveragePerSession();
-//			break;
-//		default:
-//			System.out.println("Something went wrong :)");
-//		}
-//
-//	}
-	
 	public SessionManager(String goalChosen, float hoursWorked, int optionChosen) throws IOException {
 		LocalDate date = LocalDate.now();
-		
+
 		session = new WorkSession(goalChosen, hoursWorked, date, optionChosen);
 
 	}
@@ -80,7 +46,7 @@ public class SessionManager {
 	}
 
 	public String today() {
-		//session.setTotal(totalHours[session.getOption() - 1]);
+		// session.setTotal(totalHours[session.getOption() - 1]);
 		return String.format("Hours worked this session: %.2f%n", session.getHours());
 	}
 
@@ -92,7 +58,7 @@ public class SessionManager {
 		}
 		return output;
 	}
-	
+
 	public String showAveragePerSession() {
 		return String.format("Average hours worked per session: %.4f%n", average);
 	}
@@ -103,7 +69,7 @@ public class SessionManager {
 		writer.close();
 		return "All data erased successfully.";
 	}
-	
+
 	public void operate() throws IOException {
 		writeFile();
 		readFile();

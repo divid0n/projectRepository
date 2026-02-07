@@ -50,6 +50,8 @@ public class WorkSession {
 			return "School Assignments";
 		case 4:
 			return "Guitar Practice";
+		case 5:
+			return "Gaming (slacking off)";
 		default:
 			return "Oopsie";
 		}

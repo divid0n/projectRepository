@@ -10,8 +10,6 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.ActionEvent;
@@ -81,6 +79,7 @@ public class MainWindow {
 		comboBox.addItem("Coding projects");
 		comboBox.addItem("School assignments");
 		comboBox.addItem("Guitar Practice");
+		comboBox.addItem("Gaming (slacking off)");
 		comboBox.addItem("Check Data");
 		comboBox.addItem("Erase all data");
 		comboBox.setBounds(75, 30, 192, 22);
@@ -95,7 +94,7 @@ public class MainWindow {
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				optionChosen = comboBox.getSelectedIndex();
-				if (comboBox.getSelectedIndex() == 5) {
+				if (comboBox.getSelectedIndex() == 6) {
 					try {
 						mngr = new SessionManager(selectedGoal, duration, optionChosen);
 						mngr.readFile();
@@ -104,7 +103,7 @@ public class MainWindow {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				} else if (comboBox.getSelectedIndex() == 6) {
+				} else if (comboBox.getSelectedIndex() == 7) {
 					try {
 						 mngr = new SessionManager(selectedGoal, duration, optionChosen);
 						textArea.setText(mngr.eraseData());
@@ -118,7 +117,12 @@ public class MainWindow {
 				} else {
 					try {
 						timing();
-						textArea.setText("Work in progress...");
+						if(comboBox.getSelectedIndex() != 5) {
+							textArea.setText("Work in progress...");
+						} else {
+							textArea.setText("Ya bitch, do work instead!");
+						}
+						
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
