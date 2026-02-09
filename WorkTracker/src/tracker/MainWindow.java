@@ -21,8 +21,8 @@ public class MainWindow {
 	long startTime = 0;
 	long endTime; // MAKE A PAUSE BUTTON FOR THE TIMER.
 	float duration; //  ADD AVERAGE PER DAY NOT ONLY PER SESSION.
-	String selectedGoal;
-	int optionChosen;
+	String selectedGoal; // MAKE IT WORK OUTSIDE ECLIPSE, F.E. FROM GITHUB
+	int optionChosen; // ADD GAMING VS WORK COMPARISON IN CHECK DATA
 	Timer timer;
 	TimerTask task;
 	JComboBox<String> comboBox = new JComboBox<>();
